@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customers.fragments.HOmeFragment">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:orientation="vertical"
+       android:layout_height="wrap_content">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Greetings 👋"
+           android:textAppearance="@style/TextAppearance.AppCompat.Title"
+           android:textStyle="bold"
+           android:textSize="30sp"
+           android:padding="10dp"
+           />
+
+       <TextView
+           android:id="@+id/etName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Mirera"
+           android:textAppearance="@style/TextAppearance.AppCompat.Title"
+           android:padding="10dp"
+           />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Scheduled Pickup requests"
+           android:layout_marginVertical="10dp"
+           android:layout_marginHorizontal="10dp"
+           android:textAppearance="@style/TextAppearance.AppCompat.Title"
+           />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/pickUpRecyclerView"
+           android:layout_width="match_parent"
+           android:layout_marginHorizontal="10dp"
+           android:layout_height="300dp"
+           tools:listitem="@layout/collection_item"
+           />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Users and collector Testimonials"
+           android:layout_marginVertical="10dp"
+           android:textAppearance="@style/TextAppearance.AppCompat.Title"
+           android:layout_marginHorizontal="10dp"
+           />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/testimonials"
+           android:layout_width="match_parent"
+           android:layout_height="300dp"
+           tools:listitem="@layout/testimonial"
+           />
+
+       <Button
+           android:id="@+id/btnTestify"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Feedback and Testify"
+           android:backgroundTint="#4CAF50"
+           />
+
+   </LinearLayout>
+
+</FrameLayout>

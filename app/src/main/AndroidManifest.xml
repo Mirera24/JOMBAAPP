@@ -13,28 +13,35 @@
         android:theme="@style/Theme.JOMBAAPP"
         tools:targetApi="31">
         <activity
-            android:name=".Choice"
+            android:name=".CollectorInfomation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CustomerHome"
+            android:name=".auth.Choice"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".customers.CustomerHome"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".auth.Register"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".auth.Login"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
