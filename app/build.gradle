@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.jombaapp'
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.jombaapp"
         minSdk 21
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

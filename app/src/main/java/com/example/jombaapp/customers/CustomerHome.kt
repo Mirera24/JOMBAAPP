@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.jombaapp.R
 import com.example.jombaapp.customers.fragments.CollectorsFragment
-import com.example.jombaapp.customers.fragments.HOmeFragment
+import com.example.jombaapp.customers.fragments.HomeFragment
 import com.example.jombaapp.customers.fragments.ProfileFragment
 import com.example.jombaapp.databinding.ActivityCustomerHomeBinding
 
@@ -20,11 +20,11 @@ class CustomerHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        replaceFragment(HOmeFragment())
+        replaceFragment(HomeFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> replaceFragment(HOmeFragment())
+                R.id.home -> replaceFragment(HomeFragment())
                 R.id.collectors -> replaceFragment(CollectorsFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
 
