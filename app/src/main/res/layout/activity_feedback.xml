@@ -31,7 +31,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/testimonialName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
@@ -42,7 +42,7 @@
         android:layout_marginBottom="16dp"/>
 
     <EditText
-        android:id="@+id/etTestimony"
+        android:id="@+id/testimonialMessage"
         android:layout_width="match_parent"
         android:inputType="textMultiLine"
         android:lineSpacingMultiplier="1.8"

@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jombaapp.R
 import com.example.jombaapp.customers.adapter.CollectorsAdapter
-import com.example.jombaapp.customers.adapter.TestimonialAdapter
 import com.example.jombaapp.customers.model.CollectorData
-import com.example.jombaapp.customers.model.TestimonialData
+import com.example.jombaapp.customers.screens.AddCollector
 import com.example.jombaapp.customers.screens.CollectorInformation
 import com.example.jombaapp.databinding.FragmentCollectorsBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 
 
 class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListener {
@@ -24,6 +26,9 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
     private lateinit var adapter: CollectorsAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var collectorArrayList: MutableList<CollectorData>
+
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +41,16 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.add.setOnClickListener {
+            val intent = Intent(requireActivity(), AddCollector::class.java)
+            startActivity(intent)
+        }
 
-        dataInitialize()
+        // Initialize collectorArrayList
+        collectorArrayList = mutableListOf()
+
+        getCollectors()
+
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.collectorsRecyclerView)
         recyclerView.layoutManager = layoutManager
@@ -57,16 +70,31 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
         startActivity(intent)
     }
 
-    private fun dataInitialize() {
-        collectorArrayList = arrayListOf(
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Boma Collectoors", "Boma", "", "", ""),
-            CollectorData("", "kasarani Collectoors", "kasarani", "", "", ""),
-            CollectorData("", "Ruiru Collectoors", "Ruiru", "", "", ""),
-            CollectorData("", "SouthB Collectoors", "SouthB", "", "", ""),
-            CollectorData("", "Kino Collectoors", "Kino", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", "")
-        )
+    private fun getCollectors() {
+        database = Firebase.database.reference
+        database.child("Collectors").get()
+            .addOnSuccessListener { dataSnapshot ->
+                for (collectorSnapshot in dataSnapshot.children) {
+                    val id = collectorSnapshot.child("id").getValue(String::class.java)
+                    val collectorUrl =
+                        collectorSnapshot.child("collectorUrl").getValue(String::class.java)
+                    val collectorName =
+                        collectorSnapshot.child("collectorName").getValue(String::class.java)
+                    val collectorLocation =
+                        collectorSnapshot.child("collectorLocation").getValue(String::class.java)
+                    val payRate = collectorSnapshot.child("payRate").getValue(String::class.java)
+                    val about = collectorSnapshot.child("about").getValue(String::class.java)
+                    val uid = collectorSnapshot.child("uid").getValue(String::class.java)
+
+                    if (id != null && collectorUrl != null && collectorName != null && collectorLocation != null && payRate != null && about != null && uid != null) {
+                        val collector = CollectorData(
+                            uid, collectorUrl, collectorName, collectorLocation, payRate, about
+                        )
+                        collectorArrayList.add(collector)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+
+            }
     }
 }

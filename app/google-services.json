@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "759653490981",
+    "project_id": "jomba-app",
+    "storage_bucket": "jomba-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759653490981:android:a6bd9731e7e40a4778bacc",
+        "android_client_info": {
+          "package_name": "com.example.jombaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu-AHbuGVD1Jrx-kXZEVuzPkBYtjRrTAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

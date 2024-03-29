@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".customers.screens.AddCollector">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/back"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Collector"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/collectorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="collectorName"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="16dp"/>
+    <EditText
+        android:id="@+id/collectorLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="collectorLocation"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="16dp"/>
+    <EditText
+        android:id="@+id/payRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="payRate"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="16dp"/>
+    <EditText
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:hint="about"
+        android:inputType="textMultiLine"
+        android:lineSpacingMultiplier="1.8"
+        android:gravity="top"
+        android:layout_height="200dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:id="@+id/selectImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_broken_image_24" />
+
+    <Button
+        android:id="@+id/btnAddCollector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginVertical="5dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Add collector" />
+
+
+
+
+</LinearLayout>
