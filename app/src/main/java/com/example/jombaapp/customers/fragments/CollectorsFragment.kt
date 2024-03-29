@@ -1,60 +1,69 @@
 package com.example.jombaapp.customers.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.jombaapp.R
+import com.example.jombaapp.customers.adapter.CollectorsAdapter
+import com.example.jombaapp.customers.adapter.TestimonialAdapter
+import com.example.jombaapp.customers.model.CollectorData
+import com.example.jombaapp.customers.model.TestimonialData
+import com.example.jombaapp.customers.screens.CollectorInformation
+import com.example.jombaapp.databinding.FragmentCollectorsBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CollectorsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CollectorsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListener {
+    private lateinit var binding: FragmentCollectorsBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var adapter: CollectorsAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var collectorArrayList: MutableList<CollectorData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collectors, container, false)
+    ): View {
+        binding = FragmentCollectorsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CollectorsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CollectorsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dataInitialize()
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView = view.findViewById(R.id.collectorsRecyclerView)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
+        adapter = CollectorsAdapter(collectorArrayList, this)
+        recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onCollectorClick(collector: CollectorData, position: Int) {
+        val intent = Intent(requireActivity(), CollectorInformation::class.java)
+        intent.putExtra("collectorUrl", collector.collectorUrl.toString())
+        intent.putExtra("collectorName", collector.collectorName)
+        intent.putExtra("collectorLocation", collector.collectorLocation)
+        intent.putExtra("payRate", collector.payRate)
+        intent.putExtra("about", collector.about)
+    }
+
+    private fun dataInitialize() {
+        collectorArrayList = arrayListOf(
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Mathare Collectoors", "Mathare", "", "", "")
+        )
     }
 }
