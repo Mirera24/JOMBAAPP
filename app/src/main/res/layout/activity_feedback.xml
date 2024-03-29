@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_height="match_parent"
+    tools:context=".customers.screens.Feedback">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/back"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Provide  A Feedback"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"
+        android:drawablePadding="8dp"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etTestimony"
+        android:layout_width="match_parent"
+        android:inputType="textMultiLine"
+        android:lineSpacingMultiplier="1.8"
+        android:gravity="top"
+        android:layout_height="400dp"
+        android:hint="FeedBack"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_rounded_corners"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginVertical="30dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@android:color/white"
+        android:padding="16dp"/>
+
+</LinearLayout>

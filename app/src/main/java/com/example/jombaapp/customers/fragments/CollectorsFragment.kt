@@ -36,6 +36,7 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         dataInitialize()
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.collectorsRecyclerView)
@@ -59,11 +60,11 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
     private fun dataInitialize() {
         collectorArrayList = arrayListOf(
             CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
-            CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
+            CollectorData("", "Boma Collectoors", "Boma", "", "", ""),
+            CollectorData("", "kasarani Collectoors", "kasarani", "", "", ""),
+            CollectorData("", "Ruiru Collectoors", "Ruiru", "", "", ""),
+            CollectorData("", "SouthB Collectoors", "SouthB", "", "", ""),
+            CollectorData("", "Kino Collectoors", "Kino", "", "", ""),
             CollectorData("", "Mathare Collectoors", "Mathare", "", "", ""),
             CollectorData("", "Mathare Collectoors", "Mathare", "", "", "")
         )
