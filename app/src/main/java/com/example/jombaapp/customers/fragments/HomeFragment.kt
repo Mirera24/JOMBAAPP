@@ -1,5 +1,6 @@
 package com.example.jombaapp.customers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.example.jombaapp.customers.adapter.MyCollectionsAdapter
 import com.example.jombaapp.customers.adapter.TestimonialAdapter
 import com.example.jombaapp.customers.model.MyCollectionsData
 import com.example.jombaapp.customers.model.TestimonialData
+import com.example.jombaapp.customers.screens.Feedback
+import com.example.jombaapp.customers.screens.GPS
 import com.example.jombaapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -37,6 +40,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnTestify.setOnClickListener {
+            val intent = Intent(requireActivity(), Feedback::class.java)
+            startActivity(intent)
+        }
+
+        binding.maps.setOnClickListener {
+            val intent = Intent(requireActivity(), GPS::class.java)
+            startActivity(intent)
+        }
 
         dataInitialize()
         val layoutManager = LinearLayoutManager(context)
