@@ -9,7 +9,7 @@ import com.example.jombaapp.databinding.CollectionItemBinding
 class MyCollectionsAdapter(private val list: MutableList<MyCollectionsData>) :
     RecyclerView.Adapter<MyCollectionsAdapter.CollectionViewHolder>() {
 
-    inner class CollectionViewHolder(val collectionItemBinding: CollectionItemBinding) :
+    inner class CollectionViewHolder(private val collectionItemBinding: CollectionItemBinding) :
         RecyclerView.ViewHolder(collectionItemBinding.root) {
         fun setData(collection: MyCollectionsData) {
             collectionItemBinding.apply {
@@ -37,6 +37,5 @@ class MyCollectionsAdapter(private val list: MutableList<MyCollectionsData>) :
     override fun getItemCount(): Int {
         return list.size
     }
-
 
 }

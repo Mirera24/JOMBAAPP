@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.jombaapp.auth.Login
+import com.example.jombaapp.customers.auth.Login
 import com.example.jombaapp.customers.CustomerHome
 import com.example.jombaapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth

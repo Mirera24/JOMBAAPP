@@ -12,7 +12,7 @@ class CollectorsAdapter(
 ) :
     RecyclerView.Adapter<CollectorsAdapter.CollectorsViewHolder>() {
 
-    inner class CollectorsViewHolder(val collectorItemBinding: CollectorItemBinding) :
+    inner class CollectorsViewHolder(private val collectorItemBinding: CollectorItemBinding) :
         RecyclerView.ViewHolder(collectorItemBinding.root) {
         fun setData(collector: CollectorData) {
             collectorItemBinding.apply {

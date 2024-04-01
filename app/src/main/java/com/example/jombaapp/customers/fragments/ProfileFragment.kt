@@ -8,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.jombaapp.auth.Login
+import com.example.jombaapp.collector.CollectorLogin
+import com.example.jombaapp.customers.auth.Login
 import com.example.jombaapp.customers.model.UserData
 import com.example.jombaapp.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +34,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(requireActivity(), CollectorLogin::class.java)
+            startActivity(intent)
+        }
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("registeredUser")

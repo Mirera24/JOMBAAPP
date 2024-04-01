@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var adapter: MyCollectionsAdapter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var myCollectionArrayList: MutableList<MyCollectionsData>
+    private var myCollectionArrayList = mutableListOf<MyCollectionsData>()
 
     private lateinit var adapter2: TestimonialAdapter
     private lateinit var recyclerView2: RecyclerView
@@ -52,8 +52,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
-        // Initialize myCollectionArrayList
-        myCollectionArrayList = mutableListOf()
 
         // Fetch and display user name
         fetchAndDisplayUserName()
@@ -69,6 +67,8 @@ class HomeFragment : Fragment() {
         }
 
         getSchedules()
+
+
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.pickUpRecyclerView)
         recyclerView.layoutManager = layoutManager
@@ -93,21 +93,24 @@ class HomeFragment : Fragment() {
 
         if (uid != null) {
             val database = Firebase.database.reference.child("Schedules")
-            database.orderByChild("uid").equalTo(uid).get().addOnSuccessListener { dataSnapshot ->
+            database.get().addOnSuccessListener { dataSnapshot ->
                 myCollectionArrayList = mutableListOf() // Initialize the list
                 for (trackSnapshot in dataSnapshot.children) {
                     val collectorName = trackSnapshot.child("collectorName").getValue(String::class.java)
                     val collectorLocation = trackSnapshot.child("collectorLocation").getValue(String::class.java)
-                    val collectionTime = trackSnapshot.child("collectionTime").getValue(String::class.java)
-                    val collectionDate = trackSnapshot.child("collectionDate").getValue(String::class.java)
+                    val collectionTime = trackSnapshot.child("time").getValue(String::class.java)
+                    val collectionDate = trackSnapshot.child("date").getValue(String::class.java)
 
                     if (collectorName != null && collectorLocation != null && collectionTime != null && collectionDate != null) {
                         val schedule = MyCollectionsData(uid, collectorName, collectorLocation, collectionTime, collectionDate)
                         myCollectionArrayList.add(schedule)
+                        adapter.notifyDataSetChanged()
                     }
                 }
+                adapter = MyCollectionsAdapter(myCollectionArrayList)
+                recyclerView.adapter = adapter
                 adapter.notifyDataSetChanged()
-                Log.d("data", myCollectionArrayList.toString())
+
             }.addOnFailureListener { e ->
                 // Handle failure
                 Log.e(TAG, "Failed to retrieve schedules: ${e.message}")

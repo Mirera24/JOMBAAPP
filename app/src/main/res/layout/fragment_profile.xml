@@ -119,6 +119,16 @@
             android:text="Logout"
             />
 
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="35dp"
+            android:text="Login As Collectr"
+            />
+
     </LinearLayout>
 
 </FrameLayout>

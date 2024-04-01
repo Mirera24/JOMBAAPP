@@ -9,12 +9,26 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/collector"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/collector"
         android:supportsRtl="true"
         android:theme="@style/Theme.JOMBAAPP"
         tools:targetApi="31">
+        <activity
+            android:name=".collector.CollecorHome"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".collector.CollectorLogin"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".customers.screens.AddCollector"
             android:exported="false">
@@ -63,7 +77,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".auth.Choice"
+            android:name=".Choice"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -77,14 +91,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".auth.Register"
+            android:name=".customers.auth.Register"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".auth.Login"
+            android:name=".customers.auth.Login"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
