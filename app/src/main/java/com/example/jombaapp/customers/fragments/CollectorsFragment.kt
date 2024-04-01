@@ -75,7 +75,6 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
         database.child("Collectors").get()
             .addOnSuccessListener { dataSnapshot ->
                 for (collectorSnapshot in dataSnapshot.children) {
-                    val id = collectorSnapshot.child("id").getValue(String::class.java)
                     val collectorUrl =
                         collectorSnapshot.child("collectorUrl").getValue(String::class.java)
                     val collectorName =
@@ -86,9 +85,9 @@ class CollectorsFragment : Fragment(), CollectorsAdapter.OnCollectorClickListene
                     val about = collectorSnapshot.child("about").getValue(String::class.java)
                     val uid = collectorSnapshot.child("uid").getValue(String::class.java)
 
-                    if (id != null && collectorUrl != null && collectorName != null && collectorLocation != null && payRate != null && about != null && uid != null) {
+                    if (collectorUrl != null && collectorName != null && collectorLocation != null && payRate != null && about != null && uid != null) {
                         val collector = CollectorData(
-                            uid, collectorUrl, collectorName, collectorLocation, payRate, about
+                            uid, collectorName, collectorLocation, payRate, about,collectorUrl
                         )
                         collectorArrayList.add(collector)
                     }

@@ -1,4 +1,4 @@
-package com.example.jombaapp.auth
+package com.example.jombaapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

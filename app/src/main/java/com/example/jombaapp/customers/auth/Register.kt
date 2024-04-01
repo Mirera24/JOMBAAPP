@@ -1,4 +1,4 @@
-package com.example.jombaapp.auth
+package com.example.jombaapp.customers.auth
 
 import android.content.Intent
 import android.os.Bundle

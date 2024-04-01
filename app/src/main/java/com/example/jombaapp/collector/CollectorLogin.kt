@@ -1,30 +1,26 @@
-package com.example.jombaapp.auth
+package com.example.jombaapp.collector
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.example.jombaapp.R
 import com.example.jombaapp.customers.CustomerHome
-import com.example.jombaapp.databinding.ActivityLoginBinding
+import com.example.jombaapp.databinding.ActivityCollectorLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class Login : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
-
+class CollectorLogin : AppCompatActivity() {
+    private lateinit var binding : ActivityCollectorLoginBinding
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityCollectorLoginBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
             registerEvents()
-        }
-
-        binding.tvRegister.setOnClickListener {
-            startActivity(Intent(this, Register::class.java))
-            finish()
         }
     }
 
@@ -44,7 +40,7 @@ class Login : AppCompatActivity() {
                             "Logged In successfully",
                             Toast.LENGTH_SHORT
                         ).show()
-                        startActivity(Intent(this, CustomerHome::class.java))
+                        startActivity(Intent(this, CollecorHome::class.java))
                         finish()
                     } else {
                         Toast.makeText(this, it.exception!!.message, Toast.LENGTH_SHORT)

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.jombaapp.auth.Login
+import com.example.jombaapp.customers.auth.Login
 import com.example.jombaapp.customers.adapter.ChatAdapter
 import com.example.jombaapp.customers.model.Message
 import com.example.jombaapp.databinding.ActivityChatBinding
